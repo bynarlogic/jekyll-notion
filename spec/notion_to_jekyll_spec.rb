@@ -21,19 +21,26 @@ RSpec.describe NotionToJekyll do
       end
 
       context "invalid URL" do
-        it "raises a NotionToJekyll::API::InvalidURL exception" do
+        it "raises a NotionToJekyll::Errors::InvalidURL exception" do
           VCR.use_cassette("invalid_page") do
             bad_url = "https://www.notion.so/bad-url"
             notion = NotionToJekyll::API.new(secret)
 
-            expected_error = NotionToJekyll::InvalidURL
+            expected_error = NotionToJekyll::Errors::InvalidURL
             expect { notion.get_page(bad_url) }.to raise_error(expected_error)
           end
         end
       end
 
       context "unauthroized request" do
-        it "raises a NotionToJekyll::API::Unauthorized exception"
+        it "raises a NotionToJekyll::Errors::Unauthorized exception" do
+          VCR.use_cassette("unauthorized_page") do
+            notion = NotionToJekyll::API.new("bad_secret")
+
+            expected_error = NotionToJekyll::Errors::Unauthorized
+            expect { notion.get_page(url) }.to raise_error(expected_error)
+          end
+        end
       end
     end
   end
