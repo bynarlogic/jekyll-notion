@@ -7,7 +7,7 @@ RSpec.describe NotionToJekyll do
 
   describe NotionToJekyll::API do
     let(:secret) { ENV["NOTION_SECRET"] }
-    let(:url) { 'https://www.notion.so/refactored-noise/Test-Page-77e5079b072246bba87b80ed15fcb7be' }
+    let(:url) { "https://www.notion.so/refactored-noise/Test-Page-77e5079b072246bba87b80ed15fcb7be" }
 
     describe "get_notion_page" do
       it "returns a notion page as a serialized hash object" do
