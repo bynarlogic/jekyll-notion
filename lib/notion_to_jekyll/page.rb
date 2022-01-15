@@ -18,7 +18,9 @@ module NotionToJekyll
     end
 
     def blocks
-      @page_contents["results"]
+      @page_contents["results"].map do |result|
+        Blocks::Block.new result
+      end
     end
   end
 end

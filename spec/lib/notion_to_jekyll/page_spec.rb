@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe NotionToJekyll::Page do
+RSpec.describe Page do
   describe "initialize" do
     let(:url) { "https://www.notion.so/refactored-noise/Test-Page-77e5079b072246bba87b80ed15fcb7be" }
     let(:cassettes) do
@@ -11,7 +11,7 @@ RSpec.describe NotionToJekyll::Page do
         { name: "page_meta" }
       ]
     end
-    let(:page) { VCR.use_cassettes(cassettes) { NotionToJekyll::Page.new(url) } }
+    let(:page) { VCR.use_cassettes(cassettes) { Page.new(url) } }
 
     it "has a title attribute" do
       expect(page.title).to eq("Test Page")
@@ -21,6 +21,7 @@ RSpec.describe NotionToJekyll::Page do
 
     it "has an array of blocks" do
       expect(page.blocks).to be_a(Array)
+      expect(page.blocks).to all(be_a(Blocks::Block))
     end
   end
 end

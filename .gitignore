@@ -13,3 +13,4 @@
 .byebug_history
 secret.env
 *.swp
+.DS_Store
