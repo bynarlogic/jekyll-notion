@@ -4,17 +4,29 @@
 module NotionToJekyll
   # The main API responsible for Notion to Jekyll article conversion
   class API
-    attr_accessor :api_secret
+    attr_accessor :secret
 
-    def initialize(api_secret)
-      @api_secret = api_secret
+    def initialize(secret)
+      @secret = secret
     end
 
     def get_page(url)
       block_id = get_block_id(url)
 
+      handle_request "blocks/#{block_id}/children"
+    end
+
+    def get_page_meta(url)
+      block_id = get_block_id(url)
+
+      handle_request "pages/#{block_id}"
+    end
+
+    private
+
+    def handle_request(url)
       begin
-        r = HTTParty.get("#{base_url}/blocks/#{block_id}/children", headers: headers)
+        r = HTTParty.get("#{base_url}/#{url}", headers: headers)
       rescue URI::InvalidURIError
         raise Errors::InvalidURL
       end
@@ -23,8 +35,6 @@ module NotionToJekyll
 
       r.parsed_response
     end
-
-    private
 
     def base_url
       "https://api.notion.com/v1"
@@ -37,7 +47,7 @@ module NotionToJekyll
 
     def headers
       {
-        'Authorization': "Bearer #{@api_secret}",
+        'Authorization': "Bearer #{@secret}",
         'Notion-Version': "2021-08-16"
       }
     end

@@ -40,4 +40,19 @@ RSpec.describe NotionToJekyll::API do
       end
     end
   end
+
+  describe "get_page_meta" do
+    it "returns the meta data for a notion page in a serialized hash" do
+      VCR.use_cassette("meta_page") do
+        notion = NotionToJekyll::API.new(secret)
+        data = notion.get_page_meta(url)
+
+        expect(data).to be_a(Hash)
+
+        expected_keys = %w[object id created_time last_edited_time cover icon parent archived
+                           properties url]
+        expect(data.keys).to eq(expected_keys)
+      end
+    end
+  end
 end
