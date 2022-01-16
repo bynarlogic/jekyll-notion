@@ -69,6 +69,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.2.0)
+    require_all (3.0.0)
     rexml (3.2.5)
     rouge (3.27.0)
     rspec (3.10.0)
@@ -120,6 +121,7 @@ DEPENDENCIES
   jekyll (~> 3.9)
   notion_to_jekyll!
   rake (~> 13.0)
+  require_all (~> 3.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)
   vcr (~> 6.0)

@@ -4,8 +4,20 @@
 module NotionToJekyll
   # Page object containing meta tags for page
   class Page
+    include Blocks
+
     attr_accessor :page_meta, :page_contents
     attr_reader :api
+
+    BLOCK_TYPE_MAPPING = {
+      "heading_1" => Heading1,
+      "heading_2" => Heading2,
+      "heading_3" => Heading3,
+      "paragraph" => Paragraph,
+      "code" => Code,
+      "image" => Image,
+      "bulleted_list_item" => BulletedListItem
+    }.freeze
 
     def initialize(url)
       @api = NotionToJekyll::API.new(ENV["NOTION_SECRET"])
@@ -19,7 +31,8 @@ module NotionToJekyll
 
     def blocks
       @page_contents["results"].map do |result|
-        Blocks::Block.new result
+        klass = BLOCK_TYPE_MAPPING[result["type"]]
+        klass.new result
       end
     end
   end

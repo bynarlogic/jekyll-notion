@@ -23,3 +23,5 @@ group :test do
 end
 
 gem "dotenv", "~> 2.7"
+
+gem "require_all", "~> 3.0"
