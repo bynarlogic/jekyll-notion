@@ -20,6 +20,9 @@ RSpec.describe Page do
     it "has an author attribute", pending: true
 
     it "has an array of blocks" do
+      image_file = File.open("spec/fixtures/images/a_red_ruby.png", "r")
+      allow_any_instance_of(URI::HTTPS).to receive(:open) { image_file }
+
       expect(page.blocks).to be_a(Array)
       expect(page.blocks).to all(be_a(Blocks::Block))
     end

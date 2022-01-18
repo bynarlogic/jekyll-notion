@@ -22,6 +22,10 @@ module NotionToJekyll
       handle_request "pages/#{block_id}"
     end
 
+    def get_block(block_id)
+      handle_request "blocks/#{block_id}"
+    end
+
     private
 
     def handle_request(url)
