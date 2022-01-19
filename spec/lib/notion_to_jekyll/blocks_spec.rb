@@ -112,8 +112,23 @@ RSpec.describe Blocks do
   end
 
   describe Blocks::Code do
+    let(:block) do
+      data = YAML.safe_load(File.read("spec/fixtures/blocks/code.yml"))
+      Blocks::Code.new data
+    end
+
     describe "render" do
-      it "returns code snippet in md format"
+      it "returns code snippet in md format" do
+        expected_code = <<~MD
+          {% highlight ruby %}
+          beans.each do |bean|
+          \tbean.compute! if bean.computable?
+          end
+          {% endhighlight %}
+        MD
+
+        expect(block.render).to eq(expected_code)
+      end
     end
   end
 

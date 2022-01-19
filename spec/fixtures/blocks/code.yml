@@ -1,0 +1,24 @@
+---
+object: block
+id: 5135ce1e-f22e-4e3e-bbce-c3e86cf8ad45
+created_time: '2022-01-12T02:52:00.000Z'
+last_edited_time: '2022-01-12T02:53:00.000Z'
+has_children: false
+archived: false
+type: code
+code:
+  text:
+  - type: text
+    text:
+      content: "beans.each do |bean|\n\tbean.compute! if bean.computable?\nend"
+      link:
+    annotations:
+      bold: false
+      italic: false
+      strikethrough: false
+      underline: false
+      code: false
+      color: default
+    plain_text: "beans.each do |bean|\n\tbean.compute! if bean.computable?\nend"
+    href:
+  language: ruby
