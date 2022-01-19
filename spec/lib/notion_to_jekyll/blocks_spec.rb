@@ -133,8 +133,19 @@ RSpec.describe Blocks do
   end
 
   describe Blocks::BulletedListItem do
+    let(:block) do
+      data = YAML.safe_load(File.read("spec/fixtures/blocks/bullet_list.yml"))
+      Blocks::BulletedListItem.new data
+    end
+
     describe "render" do
-      it "returns bulleted list in md format"
+      it "returns bulleted list in md format" do
+        expected_list = <<~MD
+          - Baz
+        MD
+
+        expect(block.render).to eq(expected_list)
+      end
     end
   end
 end
