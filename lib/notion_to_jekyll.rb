@@ -11,4 +11,11 @@ require_relative "notion_to_jekyll/version"
 
 # The main entry point for NotionToJekyll
 module NotionToJekyll
+  def render_page(url)
+    page = Page.new url
+
+    page.blocks.map do |block|
+      "#{block.render}\n"
+    end.join
+  end
 end

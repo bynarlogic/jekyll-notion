@@ -6,7 +6,7 @@ module NotionToJekyll
     # Block primary class
     class Code < Block
       def render
-        "#{start_highlight}\n#{text}\n#{end_highlight}\n"
+        "#{start_highlight}\n#{text}\n#{end_highlight}"
       end
 
       private

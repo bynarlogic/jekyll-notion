@@ -6,7 +6,7 @@ module NotionToJekyll
     # Block primary class
     class BulletedListItem < Block
       def render
-        "- #{text}\n"
+        "- #{text}"
       end
 
       private

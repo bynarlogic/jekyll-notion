@@ -119,7 +119,7 @@ RSpec.describe Blocks do
 
     describe "render" do
       it "returns code snippet in md format" do
-        expected_code = <<~MD
+        expected_code = <<~MD.chomp
           {% highlight ruby %}
           beans.each do |bean|
           \tbean.compute! if bean.computable?
@@ -140,9 +140,7 @@ RSpec.describe Blocks do
 
     describe "render" do
       it "returns bulleted list in md format" do
-        expected_list = <<~MD
-          - Baz
-        MD
+        expected_list = "- Baz"
 
         expect(block.render).to eq(expected_list)
       end
