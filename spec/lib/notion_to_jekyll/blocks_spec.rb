@@ -42,6 +42,19 @@ RSpec.describe Blocks do
     end
   end
 
+  describe Blocks::Divider do
+    let(:block) do
+      data = { type: "divider" }
+      Blocks::Divider.new data
+    end
+
+    describe "render" do
+      it "returns divider md format" do
+        expect(block.render).to eq("---")
+      end
+    end
+  end
+
   describe Blocks::Paragraph do
     let(:block) do
       data = YAML.safe_load(File.read("spec/fixtures/blocks/paragraph.yml"))

@@ -8,5 +8,8 @@ module NotionToJekyll
 
     # Error raised when the API is not authorized to access the requested page
     class Unauthorized < StandardError; end
+
+    # Error raised when an unknown block type is given to a page to render
+    class UnknownBlockType < StandardError; end
   end
 end

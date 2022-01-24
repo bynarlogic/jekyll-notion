@@ -26,5 +26,16 @@ RSpec.describe Page do
       expect(page.blocks).to be_a(Array)
       expect(page.blocks).to all(be_a(Blocks::Block))
     end
+
+    context "response contains an unknown block type" do
+      it "raises an UnknownBlockType error" do
+        image_file = File.open("spec/fixtures/images/a_red_ruby.png", "r")
+        allow_any_instance_of(URI::HTTPS).to receive(:open) { image_file }
+        allow(page).to receive(:results) { [{ type: "some_strange_block" }] }
+
+        expected_error = Errors::UnknownBlockType
+        expect { page.blocks }.to raise_error(expected_error)
+      end
+    end
   end
 end

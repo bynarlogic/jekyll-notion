@@ -16,6 +16,7 @@ module NotionToJekyll
       "paragraph" => Paragraph,
       "code" => Code,
       "image" => Image,
+      "divider" => Divider,
       "bulleted_list_item" => BulletedListItem
     }.freeze
 
@@ -30,10 +31,20 @@ module NotionToJekyll
     end
 
     def blocks
-      @page_contents["results"].map do |result|
+      results.map do |result|
         klass = BLOCK_TYPE_MAPPING[result["type"]]
-        klass.new result
+        begin
+          klass.new result
+        rescue NoMethodError
+          raise Errors::UnknownBlockType
+        end
       end
     end
+  end
+
+  private
+
+  def results
+    @page_contents["results"]
   end
 end
