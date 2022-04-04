@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "lib/notion_to_jekyll/version"
+require_relative "lib/jekyll-notion/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "notion_to_jekyll"
-  spec.version = NotionToJekyll::VERSION
+  spec.name = "notion"
+  spec.version = Jekyll::Notion::VERSION
   spec.authors = ["Joshua Jarvis"]
   spec.email = ["jjarvis@hey.com"]
 
   spec.summary = "This gem converts notion pages into Jekyll Posts"
   spec.description = "Simple gem that takes a Notion page URL and genenrates a Jekyll post."
-  spec.homepage = "https://github.com/bynarlogic/notion_to_jekyll"
+  spec.homepage = "https://github.com/bynarlogic/jekyll-notion"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_dependency "jekyll", ">= 3.7"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

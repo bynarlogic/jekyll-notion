@@ -2,12 +2,12 @@
 
 require "spec_helper"
 
-RSpec.describe NotionToJekyll do
+RSpec.describe Jekyll::Notion do
   it "has a version number" do
-    expect(NotionToJekyll::VERSION).not_to be nil
+    expect(Jekyll::Notion::VERSION).not_to be nil
   end
 
-  describe "render_page" do
+  describe "convert_url_to_post" do
     let(:url) { "https://www.notion.so/refactored-noise/Test-Page-77e5079b072246bba87b80ed15fcb7be" }
 
     before :each do
@@ -16,7 +16,7 @@ RSpec.describe NotionToJekyll do
     end
 
     it "returns a MD string of all blocks on the page" do
-      VCR.use_cassette("render_page") do
+      VCR.use_cassette("convert_url_to_post") do
         article = <<~MD
           ## I’m a Heading
           Here’s a list of things I like to do:
@@ -36,7 +36,9 @@ RSpec.describe NotionToJekyll do
           ### In Conclusion
           I can’t think of anything else to say\n
         MD
-        expect(render_page(url)).to eq(article)
+        convert_url_to_post(url)
+        file = File.open("./spec/fixtures/posts/post.md")
+        expect(file.read).to eq(article)
       end
     end
   end
