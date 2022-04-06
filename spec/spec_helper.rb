@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-require "notion_to_jekyll"
+require "jekyll"
 require "vcr"
 require "webmock/rspec"
 require "byebug"
 require "dotenv"
+
+require File.expand_path("../lib/jekyll_notion.rb", __dir__)
 
 Dotenv.load("secret.env")
 
@@ -24,7 +26,7 @@ VCR.configure do |config|
 end
 
 RSpec.configure do |config|
-  include NotionToJekyll
+  include Jekyll::Notion
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 
