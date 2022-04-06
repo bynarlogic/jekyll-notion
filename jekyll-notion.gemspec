@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "lib/jekyll-notion/version"
+require_relative "lib/jekyll/notion/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "notion"
+  spec.name = "jekyll-notion"
   spec.version = Jekyll::Notion::VERSION
   spec.authors = ["Joshua Jarvis"]
   spec.email = ["jjarvis@hey.com"]

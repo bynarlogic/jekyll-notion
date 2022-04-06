@@ -1,15 +1,15 @@
-# NotionToJekyll
+# Jekyll-Notion
 
 [![Ruby](https://github.com/bynarlogic/notion_to_jekyll/actions/workflows/main.yml/badge.svg)](https://github.com/bynarlogic/notion_to_jekyll/actions/workflows/main.yml)
 
-This is a WIP Jekyll Plugin for converting notion pages into Jekyll Articles. I love using Notion and I wanted an easy and low friction way to convert my notion pages into articles for my blog.
+This is a WIP Plugin for Jekyll which can be used to convert notion pages into Jekyll Articles. I love using Notion and I wanted an easy and low friction way to convert my notion pages into articles for my blog.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'notion_to_jekyll'
+gem 'jekyll-notion'
 ```
 
 And then execute:
@@ -18,14 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install notion_to_jekyll
+    $ gem install jekyll-notion
 
 ## Usage
 
 Running this command copies your notion page to the `_posts` directory of your project. Be sure to enable sharing for your Notion page before running the command. 
 
 ```
-bundle exec jekyll notion-to-jekyll <notion-page-url> <post-name>
+jekyll create_post_from_notion <url>
 ```
 
 

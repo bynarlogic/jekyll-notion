@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    notion (0.1.0)
+    jekyll-notion (0.1.1)
       jekyll (>= 3.7)
 
 GEM
@@ -120,7 +120,7 @@ DEPENDENCIES
   dotenv (~> 2.7)
   httparty (~> 0.20.0)
   jekyll (~> 3.9)
-  notion!
+  jekyll-notion!
   rake (~> 13.0)
   require_all (~> 3.0)
   rspec (~> 3.0)

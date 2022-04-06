@@ -1,27 +1,28 @@
 # frozen_string_literal: true
+require "jekyll/commands/notion_post"
 
 # namespace for Jekyll
 module Jekyll
-  require "httparty"
-  require "require_all"
-  require "dotenv"
-
-  require_relative "jekyll-notion/blocks/block"
-  require_relative "jekyll-notion/blocks/heading1"
-  require_relative "jekyll-notion/blocks/heading2"
-  require_relative "jekyll-notion/blocks/heading3"
-  require_relative "jekyll-notion/blocks/image"
-  require_relative "jekyll-notion/blocks/code"
-  require_relative "jekyll-notion/blocks/bulleted_list_item"
-  require_relative "jekyll-notion/blocks/paragraph"
-  require_relative "jekyll-notion/blocks/divider"
-  require_relative "jekyll-notion/api"
-  require_relative "jekyll-notion/errors"
-  require_relative "jekyll-notion/page"
-  require_relative "jekyll-notion/version"
-
   # The main entry point
   module Notion
+    require "httparty"
+    require "require_all"
+    require "dotenv"
+
+    require "jekyll/notion/blocks/block"
+    require "jekyll/notion/blocks/heading1"
+    require "jekyll/notion/blocks/heading2"
+    require "jekyll/notion/blocks/heading3"
+    require "jekyll/notion/blocks/image"
+    require "jekyll/notion/blocks/code"
+    require "jekyll/notion/blocks/bulleted_list_item"
+    require "jekyll/notion/blocks/paragraph"
+    require "jekyll/notion/blocks/divider"
+    require "jekyll/notion/api"
+    require "jekyll/notion/errors"
+    require "jekyll/notion/page"
+    require "jekyll/notion/version"
+
     Dotenv.load("secret.env")
 
     def convert_url_to_post(url)
@@ -35,6 +36,3 @@ module Jekyll
     end
   end
 end
-
-require "jekyll"
-require_all "lib/jekyll/commands"
